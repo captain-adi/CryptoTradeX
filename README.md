@@ -1,69 +1,114 @@
-# React + TypeScript + Vite
+# 📈 CryptoTradeX – Real-Time Paper Trading App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 🔗 Project Type: Frontend Web Application  
+### 🌐 Market Focus: Cryptocurrency  
+### 🛠️ Tech Stack: React + Vite + Tailwind + CoinGecko + Binance WebSocket  
+### 📦 APIs: CoinGecko, exchangerate.host, Binance WebSocket
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 Overview
 
-## Expanding the ESLint configuration
+**CryptoTradeX** is a responsive, real-time **paper trading platform** designed for crypto enthusiasts. It allows users to simulate trading using real market data — with no risk — while offering features like **portfolio tracking**, **price alerts**, **real-time updates**, **multi-currency**, and **multi-language support**.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The application is built with performance and UX in mind, making it ideal for developers, learners, and hobbyist traders.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🎯 Project Objectives
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Simulate real-world crypto trading
+- Provide real-time price updates using WebSockets
+- Visualize portfolio performance over time
+- Support dark mode, mobile UI, and multilingual content
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧰 Tech Stack
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Layer         | Tool / Library                     |
+|---------------|-------------------------------------|
+| Frontend      | React + Vite                       |
+| Styling       | Tailwind CSS (dark mode enabled)   |
+| State Mgmt    | React Context API         |
+| Charting      | Chart.js / Recharts / TradingView  |
+| Real-time     | Binance WebSocket / setInterval    |
+| API Data      | CoinGecko, exchangerate.host       |
+| Storage (MVP) | localStorage                       |
+| i18n          | react-i18next                      |
+
+---
+
+## 🔧 Features & Frameworks Used
+
+### 🌙 Theme & Appearance
+
+#### 1. Dark Mode / Theme Toggle  
+- 🛠️ Tailwind CSS with `dark:` variants  
+- Toggle using Context or system preference  
+
+#### 2. Mobile Responsive Design  
+- 🛠️ TailwindCSS responsive utilities (`sm:`, `md:`, `lg:`)  
+- Flexbox/Grid + media queries  
+
+---
+
+### 💱 Currency & Localization
+
+#### 3. Currency Switcher  
+- 🛠️ CoinGecko or [exchangerate.host](https://exchangerate.host) API  
+- Supports INR, USD, EUR, etc.
+
+#### 4. Multi-Language Support  
+- 🛠️ `react-i18next` for i18n  
+- English & Hindi (can expand later)
+
+---
+
+### 🔄 Real-Time Functionality
+
+#### 5. Real-Time Price Updates  
+- 🛠️ Binance WebSocket (`wss://stream.binance.com/ws/...`)  
+- Fallback: CoinGecko + `setInterval()` polling
+
+#### 6. Price Alerts  
+- 🛠️ Custom logic (stored in localStorage or backend)  
+- Triggered using `setInterval()` + condition match
+
+---
+
+### 🔍 Smart UX Features
+
+#### 7. Live Search + Autocomplete  
+- 🛠️ CoinGecko `/coins/list` API  
+- Input debouncing with `useEffect` & `setTimeout`
+
+#### 8. Asset Details Page  
+- 🛠️ CoinGecko `/coins/{id}`  
+- Chart.js / TradingView for historical prices  
+- Includes chart, stats, and buy/sell panel
+
+---
+
+### 📊 Portfolio Insights
+
+#### 9. Performance Graph  
+- 🛠️ `react-chartjs-2` or `recharts`  
+- Data: CoinGecko `/coins/{id}/market_chart?days=30`  
+- Time filters: 1D, 7D, 1M, etc.
+
+---
+
+## 📡 APIs Used
+
+| Purpose                  | API                          | Auth | Free |
+|--------------------------|-------------------------------|------|------|
+| Market Data (Crypto)     | CoinGecko                     | ❌    | ✅   |
+| Real-time Price Updates  | Binance WebSocket             | ❌    | ✅   |
+| Currency Conversion      | exchangerate.host             | ❌    | ✅   |
+| Charts Embed (Optional)  | TradingView Widget            | ❌    | ✅   |
+
+---
+
+## 🗂️ Project Structure
+
